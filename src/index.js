@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter, 
+  RouterProvider
+} from 'react-router-dom';
+import { FilmTable } from './components/FilmTable';
+import { FilmDetails } from './components/FilmDetails';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <FilmTable/>
+  },
+  {
+    path: "/films/:filmId",
+    element: <FilmDetails/>
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
